@@ -1,0 +1,37 @@
+body {
+    background: darkslateblue;
+}
+
+.imgBox {
+    background-image: url('logo.png');
+    position: relative;
+    top: 7px;
+    left: 5px;
+    height: 145px;
+    width: 145px;
+    cursor: pointer;
+}
+
+.whiteBox {
+    display: inline-block;
+    height: 155px;
+    width: 155px;
+    margin: 10px;
+    background-color: white;
+    border: 3px solid green;
+    /* border-radius: 50%; */
+}
+
+.hold {
+    border: 3px solid red;
+    /* border-radius: 50%; */
+}
+
+.dashed {
+    background: rgb(216, 209, 209);
+    border-style: dashed;
+}
+
+.hide {
+    display: none;
+}

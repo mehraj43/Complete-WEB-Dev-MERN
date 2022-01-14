@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid + Media Queries</title>
+    <style>
+        .container {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-areas:
+                'navbar navbar navbar navbar'
+                'section section section aside'
+                'footer footer footer footer';
+        }
+
+        @media only screen and (max-width:300px) {
+            body {
+                background-color: red;
+            }
+            .container {
+                grid-template-areas:
+                    'navbar navbar navbar navbar'
+                    'section section section section'
+                    'aside aside aside aside'
+                    'footer footer footer footer';
+            }
+            aside{
+                display: none;
+            }
+            #spanid{
+                display: block;
+                text-align: center;
+            }
+        }
+
+        @media only screen and (min-width: 300px) and (max-width:500px) {
+            body {
+                background-color: blue;
+            }
+            .container {
+                grid-template-areas:
+                    'navbar navbar navbar navbar'
+                    'section section section section'
+                    'aside aside aside aside'
+                    'footer footer footer footer';
+            }
+            aside{
+                display: none;
+            }
+            #spanid{
+                display: block;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 500px) and (max-width:800px) {
+            body {
+                background-color: yellow;
+            }
+
+            .container {
+                grid-template-areas:
+                    'navbar navbar navbar navbar'
+                    'section section section section'
+                    'aside aside aside aside'
+                    'footer footer footer footer';
+            }
+            #spanid{
+                display: block;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 800px) {
+            body {
+                background-color: green;
+            }
+        }
+
+        .bdr {
+            border: 2px solid black;
+            padding: 10px 23px;
+            background-color: wheat;
+        }
+
+        nav {
+            grid-area: navbar;
+        }
+
+        section {
+            grid-area: section;
+        }
+
+        aside {
+            grid-area: aside;
+        }
+
+        footer {
+            grid-area: footer;
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="bdr">
+            <span id="spanid">Home</span>
+            <span id="spanid">About Us</span>
+            <span id="spanid">Contact</span>
+            <span id="spanid">Services</span>
+        </nav>
+        <section class="bdr">
+            <h2>Learn CSS in Hindi</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam illo sapiente iste delectus tempora saepe at omnis ea tenetur rerum minus eius aspernatur voluptate provident, dolores odio! Nulla iusto autem quasi quis eaque debitis quibusdam corrupti repellendus nam excepturi modi, aliquid non quod inventore sint, odio voluptatibus unde! Error laudantium repellat eius delectus est soluta quia quidem voluptates perferendis. Quisquam architecto sequi dolorem quod porro saepe vel eaque, cumque accusamus quas, perspiciatis provident, quos laborum modi ullam reiciendis vitae in tempore nostrum reprehenderit quo. Veniam repudiandae consequuntur hic. Alias quas sed libero reprehenderit. Exercitationem asperiores voluptatem suscipit et nulla maxime nihil, esse quaerat dicta sint fuga alias inventore tenetur minus laborum ipsam vitae fugit aliquam provident. Eveniet repellendus blanditiis neque sint nulla? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae voluptatem sunt corrupti ullam qui molestiae? Velit qui reprehenderit, quisquam nulla autem at, excepturi molestiae sapiente amet doloremque commodi soluta deserunt dolorum doloribus sequi. Atque aspernatur, autem quibusdam in aut consequuntur culpa excepturi tenetur nam dolorem, tempore obcaecati quisquam mollitia a, repellendus hic delectus provident eius quas? Explicabo, distinctio nihil qui facilis facere cum cupiditate, pariatur earum a beatae atque possimus et amet iure laborum. Id labore iure eligendi illum architecto fuga. Voluptatibus nulla aspernatur reprehenderit numquam, ad tenetur est odio laudantium vitae, perspiciatis maxime odit fugit quis iste consequuntur earum placeat magni praesentium? Nulla culpa nesciunt suscipit rerum esse sed praesentium eaque excepturi doloremque. Numquam cum, beatae exercitationem excepturi adipisci eum eveniet inventore? Dolores et iusto, repudiandae totam mollitia quam accusantium nam aspernatur amet! Quia sunt provident tempore error similique molestiae ad vel, beatae officia dignissimos! Voluptatibus sed nihil placeat. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi voluptatem corrupti est commodi recusandae doloremque, similique non dolore aliquid labore quaerat fuga sed sunt vero repellat consequatur temporibus, laboriosam porro numquam tempore nostrum quibusdam sequi! Tempore tenetur quod vero earum aliquam natus perferendis molestias rerum, autem repudiandae maiores ducimus quasi exercitationem deserunt nobis incidunt molestiae accusantium, vel et inventore non libero tempora quaerat dolorem. Tenetur excepturi voluptate consectetur minima ipsam at soluta, dolor aliquam delectus ab impedit. At ratione eveniet iure unde harum assumenda blanditiis earum? Laborum ducimus, eos nostrum placeat iure provident beatae a voluptates, neque, repudiandae illum perferendis?</p>
+        </section>
+        <aside class="bdr">
+            <h2>More About us</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus cupiditate maiores suscipit exercitationem beatae nesciunt corrupti, libero at labore aperiam ipsum ex obcaecati fugit, voluptatum, excepturi ad quos assumenda. Numquam necessitatibus sequi eum aperiam, quidem expedita excepturi rem quasi, sint molestias quia eaque accusantium dolore repudiandae totam quae dolorem doloribus sunt nesciunt dolor, ad praesentium? Ea unde hic voluptatem in earum repudiandae, ipsa odit a fugiat commodi. Voluptate placeat officiis commodi illo aliquam, nostrum necessitatibus amet similique dolores aperiam consequuntur sunt tempore. Maiores a laboriosam nihil facere sequi. Nisi nobis veniam amet cupiditate soluta et, facilis quis quam architecto? Dolore animi nisi, possimus voluptatem laudantium aliquid ab est dolorem impedit incidunt repudiandae ut quam fugiat totam voluptatibus consectetur. Modi quisquam eligendi, perferendis excepturi, facilis autem reiciendis iure neque vero quis culpa veniam numquam quo amet dolorem nostrum necessitatibus, eaque natus ut in minus quibusdam ipsum. Voluptate beatae deserunt autem dicta.</p>
+        </aside>
+    </div>
+    <footer class="bdr">Copyright CodewithMalik@43</footer>
+</body>
+
+</html>

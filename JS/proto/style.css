@@ -1,0 +1,139 @@
+body {
+    font-size: 15pt;
+}
+
+/* Header - Logo And SearchBar */
+
+#headBar {
+    display: flex;
+    flex-direction: column;
+    background-color: ghostwhite;
+    width: 100vw;
+    height: 6rem;
+    position: sticky;
+    top: 0%;
+    left: 0%;
+    z-index: 1000;
+}
+
+#Menu {
+    height: 42vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Logo {
+    display: flex;
+    width: 43vw;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.8rem;
+}
+
+.History_Discount {
+    display: flex;
+    width: 30vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.History_Discount ion-icon {
+    font-size: 1.8rem;
+}
+
+.History_Discount button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+#Search {
+    overflow: none;
+    height: 45vh;
+}
+
+.form-Search {
+    display: flex;
+    justify-content: space-around;
+}
+
+#Search input {
+    width: 45vw;
+}
+
+#Search #Type {
+    border-radius: 4px;
+}
+
+#Search button {
+    height: 82%;
+}
+
+/* For Container */
+
+.Container {
+    height: 3000px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    width: 100vw;
+}
+
+#Discount {
+    height: 11rem;
+    border: 1px solid black;
+}
+
+#Discount img {
+    height: 10rem;
+    width: 100vw;
+}
+
+/* Footer Nav-Bar */
+
+#footBar {
+    background-color: whitesmoke;
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    justify-content: center;
+    width: 100vw;
+    height: 3rem;
+}
+
+#footBar #BoxCe {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#footBar #BoxCe .Box {
+    display: flex;
+    justify-content: space-around;
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    height: 40px;
+    width: 24%;
+}
+
+.Box button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    border-radius: 20px;
+    width: 80%;
+}
+
+#footBar ion-icon {
+    font-size: 33px;
+}
+
+#Profile {
+    font-size: 35px;
+    margin: auto;
+}

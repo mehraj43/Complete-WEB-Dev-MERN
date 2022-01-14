@@ -1,0 +1,17 @@
+{
+  "name": "tut69",
+  "version": "1.0.0",
+  "description": "This is a npm package",
+  "main": "tut69.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "awesome"
+  ],
+  "author": "Malik",
+  "license": "ISC",
+  "dependencies": {
+    "slugify": "^1.6.1"
+  }
+}
