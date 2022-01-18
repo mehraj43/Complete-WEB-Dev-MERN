@@ -3,9 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
   const location = useLocation();
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
+
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
