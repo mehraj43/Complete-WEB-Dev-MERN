@@ -31,7 +31,7 @@ const Notes = () => {
   };
 
   const handleClick = (e) => {
-    console.log('updating the log', note);
+    // console.log('updating the log', note);
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
   };
@@ -89,6 +89,8 @@ const Notes = () => {
                     name='etitle'
                     aria-describedby='emailHelp'
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className='mb-3'>
@@ -102,6 +104,8 @@ const Notes = () => {
                     id='edescription'
                     name='edescription'
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className='mb-3'>
@@ -129,6 +133,11 @@ const Notes = () => {
                 Close
               </button>
               <button
+                disabled={
+                  note.etitle.length < 5 ||
+                  note.edescription.length < 5 ||
+                  note.etag.length < 3
+                }
                 onClick={handleClick}
                 type='button'
                 className='btn btn-primary'
@@ -142,11 +151,15 @@ const Notes = () => {
 
       <div className='row my-3'>
         <h2>Your Notes</h2>
-        {notes.map((note) => {
-          return (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />
-          );
-        })}
+        <div className='container mx-2'>
+          {notes.length === 0 && 'No notes to display'}
+        </div>
+        {notes &&
+          notes.map((note) => {
+            return (
+              <Noteitem key={note._id} updateNote={updateNote} note={note} />
+            );
+          })}
       </div>
     </>
   );

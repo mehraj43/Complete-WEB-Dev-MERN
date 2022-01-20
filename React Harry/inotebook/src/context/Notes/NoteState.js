@@ -1,11 +1,14 @@
 import NoteContext from './noteContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const NoteState = (props) => {
   const host = 'http://localhost:5000';
   const notesInitial = [];
 
   const [notes, setNotes] = useState(notesInitial);
+  const [authToken, setAuthToken] = useState(
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlOTJlMDczNjM0Nzc3ZjE3NGIyODgyIn0sImlhdCI6MTY0MjY3MzQwN30.zYlUd3hjvtrso_GLzLRZ1yzfBHYOFldJxWgGJg7lbrU'
+  );
 
   // Fetch all Notes
   const fetchNotes = async () => {
@@ -14,12 +17,10 @@ const NoteState = (props) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlMTI1ZDlhNzAzNzc2MDRlMjUxMTU4In0sImlhdCI6MTY0MjE0NTI3M30.51UuQmRt1xZc5OFaYhiGb7cTc_aP1jVeuARvGEbAEI8',
+        'auth-token': authToken,
       },
     });
     const json = await response.json();
-    console.log(json);
     setNotes(json);
   };
 
@@ -38,15 +39,7 @@ const NoteState = (props) => {
     });
 
     // Logic to add Note in client
-    const note = {
-      _id: '61e12673a703677604e25g1160',
-      user: '61e125d9a70377604e251158',
-      title: title,
-      description: description,
-      tag: tag,
-      date: '2022-01-14T07:29:55.285Z',
-      __v: 0,
-    };
+    const note = await response.json();
     setNotes(notes.concat(note));
   };
 
@@ -63,7 +56,6 @@ const NoteState = (props) => {
     });
 
     // Logic to delete note in client
-    console.log('Deleting Note with id:' + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
