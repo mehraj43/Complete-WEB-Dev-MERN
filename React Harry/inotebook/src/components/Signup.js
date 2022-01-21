@@ -4,13 +4,16 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const navigate = useNavigate();
   const [creds, setCreds] = useState({
+    name: '',
     email: '',
     password: '',
+    cpassword: '',
   });
 
   const SigningUp = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/auth/login', {
+    const { name, email, password } = creds;
+    const response = await fetch('http://localhost:5000/api/auth/createuser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,9 +47,8 @@ const Signup = () => {
             className='form-control'
             id='name'
             name='name'
-            // value={creds.email}
+            required
             onChange={onChange}
-            aria-describedby='emailHelp'
           />
         </div>
         <div className='mb-3'>
@@ -58,9 +60,8 @@ const Signup = () => {
             className='form-control'
             id='email'
             name='email'
-            // value={creds.email}
+            required
             onChange={onChange}
-            aria-describedby='emailHelp'
           />
         </div>
         <div className='mb-3'>
@@ -71,7 +72,8 @@ const Signup = () => {
             type='password'
             className='form-control'
             id='password'
-            // value={creds.password}
+            minLength={5}
+            required
             onChange={onChange}
             name='password'
           />
@@ -84,7 +86,8 @@ const Signup = () => {
             type='password'
             className='form-control'
             id='cpassword'
-            // value={creds.password}
+            minLength={5}
+            required
             onChange={onChange}
             name='cpassword'
           />
