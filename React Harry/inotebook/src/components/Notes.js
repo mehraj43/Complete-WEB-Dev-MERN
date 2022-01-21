@@ -1,11 +1,23 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import noteContext from '../context/Notes/noteContext';
 import AddNote from './AddNote';
 import Noteitem from './Noteitem';
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(noteContext);
+  let navigate = useNavigate();
   const { notes, fetchNotes, editNote } = context;
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      fetchNotes();
+    } else {
+      navigate('/login');
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const ref = useRef(null);
   const refClose = useRef(null);
   const [note, setNote] = useState({
@@ -14,11 +26,6 @@ const Notes = () => {
     edescription: '',
     etag: '',
   });
-
-  useEffect(() => {
-    fetchNotes();
-    // eslint-disable-next-line
-  }, []);
 
   const updateNote = (currentNote) => {
     ref.current.click();
@@ -34,6 +41,7 @@ const Notes = () => {
     // console.log('updating the log', note);
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    props.showAlert('Updated Successfully', 'success');
   };
 
   const onChange = (e) => {
@@ -42,7 +50,7 @@ const Notes = () => {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
       {/* Button trigger modal  */}
       <button
         ref={ref}
@@ -154,10 +162,15 @@ const Notes = () => {
         <div className='container mx-2'>
           {notes.length === 0 && 'No notes to display'}
         </div>
-        {notes &&
+        {notes.length > 0 &&
           notes.map((note) => {
             return (
-              <Noteitem key={note._id} updateNote={updateNote} note={note} />
+              <Noteitem
+                key={note._id}
+                updateNote={updateNote}
+                showAlert={props.showAlert}
+                note={note}
+              />
             );
           })}
       </div>

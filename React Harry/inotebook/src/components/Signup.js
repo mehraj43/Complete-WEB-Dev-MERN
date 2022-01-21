@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = (props) => {
   const navigate = useNavigate();
   const [creds, setCreds] = useState({
     name: '',
@@ -18,7 +18,11 @@ const Signup = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(creds),
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
     });
     const json = await response.json();
     console.log(json);
@@ -26,8 +30,9 @@ const Signup = () => {
       // save the auth token and redirect
       localStorage.setItem('token', json.authtoken);
       navigate('/');
+      props.showAlert('Account Created Successfully ', 'success');
     } else {
-      alert('Invalid credentials');
+      props.showAlert('Invalid Details', 'danger');
     }
   };
 
@@ -45,6 +50,7 @@ const Signup = () => {
           <input
             type='text'
             className='form-control'
+            value={creds.name}
             id='name'
             name='name'
             required
@@ -58,6 +64,7 @@ const Signup = () => {
           <input
             type='email'
             className='form-control'
+            value={creds.email}
             id='email'
             name='email'
             required
@@ -71,6 +78,7 @@ const Signup = () => {
           <input
             type='password'
             className='form-control'
+            value={creds.password}
             id='password'
             minLength={5}
             required
@@ -85,6 +93,7 @@ const Signup = () => {
           <input
             type='password'
             className='form-control'
+            value={creds.cpassword}
             id='cpassword'
             minLength={5}
             required
