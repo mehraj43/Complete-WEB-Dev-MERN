@@ -162,17 +162,16 @@ const Notes = (props) => {
         <div className='container mx-2'>
           {notes.length === 0 && 'No notes to display'}
         </div>
-        {notes.length > 0 &&
-          notes.map((note) => {
-            return (
-              <Noteitem
-                key={note._id}
-                updateNote={updateNote}
-                showAlert={props.showAlert}
-                note={note}
-              />
-            );
-          })}
+        {notes.map((note) => {
+          return (
+            <Noteitem
+              key={note._id}
+              updateNote={updateNote}
+              showAlert={props.showAlert}
+              note={note}
+            />
+          );
+        })}
       </div>
     </>
   );

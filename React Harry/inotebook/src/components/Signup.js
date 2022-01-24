@@ -12,27 +12,38 @@ const Signup = (props) => {
 
   const SigningUp = async (e) => {
     e.preventDefault();
-    const { name, email, password } = creds;
-    const response = await fetch('http://localhost:5000/api/auth/createuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      // save the auth token and redirect
-      localStorage.setItem('token', json.authtoken);
-      navigate('/');
-      props.showAlert('Account Created Successfully ', 'success');
+    const { name, email, password, cpassword } = creds;
+    if (password === cpassword) {
+      try {
+        const response = await fetch(
+          'http://localhost:5000/api/auth/createuser',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+            }),
+          }
+        );
+        const json = await response.json();
+        console.log(json);
+        if (json.success) {
+          // save the auth token and redirect
+          localStorage.setItem('token', json.authToken);
+          navigate('/');
+          props.showAlert('Account Created Successfully ', 'success');
+        } else {
+          props.showAlert('Invalid Details', 'danger');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      props.showAlert('Invalid Details', 'danger');
+      console.log('Please Enter Correct Password ');
     }
   };
 
@@ -41,7 +52,8 @@ const Signup = (props) => {
   };
 
   return (
-    <div>
+    <div className='container mt-2'>
+      <h2 className='my-2'>Create an account to use iNoteBook</h2>
       <form onSubmit={SigningUp}>
         <div className='mb-3'>
           <label htmlFor='name' className='form-label'>
